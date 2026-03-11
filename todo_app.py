@@ -28,7 +28,6 @@ class TodoApp:
 
         self.refresh_tasks()
 
-    # ---------------- UI ----------------
 
     def build_ui(self):
 
@@ -74,7 +73,6 @@ class TodoApp:
             command=self.add_task
         ).grid(row=0, column=6, padx=10)
 
-        # search
         search_frame = tk.Frame(self.root, bg="#eef1f7")
         search_frame.pack()
 
@@ -85,7 +83,6 @@ class TodoApp:
 
         tk.Entry(search_frame, textvariable=self.search_var).pack(side="left", padx=10)
 
-        # table
         columns = ("Task", "Priority", "Due Date", "Status")
 
         self.tree = ttk.Treeview(
@@ -105,7 +102,6 @@ class TodoApp:
 
         self.tree.pack(pady=10)
 
-        # buttons
         btn = tk.Frame(self.root, bg="#eef1f7")
         btn.pack()
 
@@ -125,7 +121,6 @@ class TodoApp:
             command=self.delete_task
         ).grid(row=0, column=1, padx=6)
 
-        # progress
         self.progress = ttk.Progressbar(
             self.root,
             orient="horizontal",
@@ -134,7 +129,6 @@ class TodoApp:
         )
         self.progress.pack(pady=10)
 
-        # analytics frame
         self.chart_frame = tk.LabelFrame(
             self.root,
             text="📊 Analytics Dashboard",
@@ -143,7 +137,6 @@ class TodoApp:
 
         self.chart_frame.pack(fill="both", expand=True, padx=20, pady=20)
 
-    # ---------------- TASK FUNCTIONS ----------------
 
     def add_task(self):
 
@@ -198,7 +191,6 @@ class TodoApp:
 
         self.refresh_tasks()
 
-    # ---------------- FILE STORAGE ----------------
 
     def save_tasks(self):
 
@@ -212,7 +204,6 @@ class TodoApp:
             with open(FILE, "r") as f:
                 self.tasks = json.load(f)
 
-    # ---------------- ANALYTICS ----------------
 
     def draw_analytics(self):
 
@@ -248,7 +239,6 @@ class TodoApp:
         canvas.draw()
         canvas.get_tk_widget().pack()
 
-    # ---------------- REFRESH ----------------
 
     def refresh_tasks(self):
 
@@ -286,5 +276,6 @@ class TodoApp:
 root = tk.Tk()
 
 app = TodoApp(root)
+
 
 root.mainloop()
